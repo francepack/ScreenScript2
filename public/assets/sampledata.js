@@ -1,47 +1,62 @@
+// ***Sample data***
+
+// Data is broken into gamesets, allowing multiple 
+// groups to access their games on this platform.
+// You create custom script categories for each game,
+// allowing for groupings of related script pieces.
+// Each category has multiple script pieces, 
+// and each of those script pieces has multiple texts,
+// each text has one of 3 types, influencing its view.
+
 var gameSets = [
   {
     name: "Awesome Games Inc",
+    id: "a1",
     logo: "logo_url",
     background: "company_specific_img_url",
     games: [
       {
-        name: "Dungeon Crawl",
-
-      },
-      {
         name: "Diving Adventure",
-
+        id: 'ag1',
+        images: [
+          {
+            title: "pic_caption_here",
+            id: "ag1i1",
+            url: "pic_url_here"
+          },
+          {
+            title: "pic_caption_here",
+            id: "ag1i2",
+            url: "pic_url_here"
+          },
+        ],
+        script_categories: [
+          {
+            name: "Category title",
+            id: "ag1c1",
+            scripts: [
+              {
+                name: "Script name",
+                id: "ag1c1s1",
+                texts: [
+                  {
+                    textType: "main",
+                    id: "ag1c1s1t1",
+                    text: "group of text",
+                    isChecked: false,
+                  },
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         name: "Fire escape!",
 
       },
       {
-        name: "My cat's stuck in a tree- help!",
-
-      },
-      {
-        name: "So you wanna be a pro wrestler?",
-
-      },
-      {
-        name: "Home Alone X",
-
-      },
-      {
         name: "Jungle survival",
-
-      },
-      {
-        name: "Where did my passport go?",
-
-      },
-      {
-        name: "This breif case isn't mine, I swear!",
-
-      },
-      {
-        name: "How did you get in?",
 
       },
       {
@@ -71,91 +86,83 @@ var gameSets = [
     ]
   },
   {
-    name: "Cool Company Games",
+    name: "Generic Company Games",
     logo: "logo_url",
     background: "company_specific_img_url",
     games: [
       {
-        name: "Dungeon Crawl",
+        name: "Title 1",
 
       },
       {
-        name: "Diving Adventure",
+        name: "Title 2",
 
       },
       {
-        name: "Fire escape!",
+        name: "Title 3",
 
       },
       {
-        name: "My cat's stuck in a tree- help!",
+        name: "Title 4",
 
       },
       {
-        name: "So you wanna be a pro wrestler?",
+        name: "Title 5",
 
       },
       {
-        name: "Home Alone X",
+        name: "Title 6",
 
       },
       {
-        name: "Jungle survival",
+        name: "Title 7",
 
       },
       {
-        name: "Where did my passport go?",
+        name: "Title 8",
 
       },
       {
-        name: "This breif case isn't mine, I swear!",
+        name: "Title 9",
 
       },
       {
-        name: "How did you get in?",
+        name: "Title 10",
 
       },
       {
-        name: "Creepy Crawlies",
+        name: "Title 11",
 
       },
       {
-        name: "Spelunking",
+        name: "Title 12",
 
       },
       {
-        name: "Perilous Climbing",
+        name: "Title 13",
 
       },
       {
-        name: "River Run",
+        name: "Title 14",
 
       },
       {
-        name: "A walk gone wrong",
+        name: "Title 15",
 
       },
       {
-        name: "Disaster Production",
+        name: "Title 16",
 
       },
     ]
   },
   {
-    name: "Mason's wacky adventures",
+    name: "Mason's Wacky Adventures",
     logo: "logo_url",
     background: "company_specific_img_url",
     games: [
       {
         name: "Dungeon Crawl",
-
-      },
-      {
-        name: "Diving Adventure",
-
-      },
-      {
-        name: "Fire escape!",
 
       },
       {
@@ -171,10 +178,6 @@ var gameSets = [
 
       },
       {
-        name: "Jungle survival",
-
-      },
-      {
         name: "Where did my passport go?",
 
       },
@@ -187,29 +190,27 @@ var gameSets = [
 
       },
       {
-        name: "Creepy Crawlies",
-
-      },
-      {
-        name: "Spelunking",
-
-      },
-      {
-        name: "Perilous Climbing",
-
-      },
-      {
-        name: "River Run",
-
-      },
-      {
         name: "A walk gone wrong",
 
       },
       {
-        name: "Disaster Production",
+        name: "Disasterous Production",
+
+      },
+      {
+        name: "Reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeally long word",
+
+      },
+      {
+        name: "Edge case Edge case Edge case Edge case Edge case Edge case Edge case Edge case Edge case Edge case",
+
+      },
+      {
+        name: "Why, just whyyyyyyyyyyyyyyyyyyyyyyyyy??????????yyyyyyyyyyyyyyyyyy?????????????? WHHHYYYYYYYYYYYYY!!!!!!!!!!!!!!!!!!!!",
 
       },
     ]
   },
-]
+];
+
+export default gameSets;
