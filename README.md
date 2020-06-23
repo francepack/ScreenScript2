@@ -1,3 +1,6 @@
+# ScreenScript
+When complete, this app will assist me lead people through scripted screen-share adventures, a current part time job.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
