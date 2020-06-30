@@ -47,7 +47,7 @@ export class App extends Component {
             {this.state.error}
           </div>
         }
-        {this.loginControl}
+        {this.loginControl()}
       </div>
     );
   }

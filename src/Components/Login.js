@@ -14,33 +14,42 @@ export class Login extends Component {
   componentDidMount() {
     let allGroups = []
     gameSets.forEach(set => {
-      allGroups.push(set.name)
+      allGroups.push({
+        name: set.name,
+        id: set.id
+      })
     })
     this.setState({ groups: allGroups })
   }
 
-  createList = () => {
-    this.groups.forEach(group => {
-      return(
-        <li>{group}</li>
-      )
-    })
+  selectGroup = (e) => {
+    console.log(e.target.id)
+  }
+
+  renderGroupList = () => {
+    if (this.state.groups) {
+      return this.state.groups.map(group => (
+        <li
+          onClick={(e) => this.selectGroup(e)} 
+          key={group.name}
+          id={group.id}
+          >{group.name}
+        </li> 
+      ))
+    } 
   }
   
   render() {
     return (
       <div className="login">
         <h2>Hi there- what group are you logging in with?</h2>
-        <div class="listbox-area">
-          <div class="left-area">
+        <div className="listbox-area">
+          <div>
             <span>
               Groups:
             </span>
-            <ul id="groups-list"
-                tabindex="0"
-                role="listbox"
-                aria-labelledby="ss_elem">
-              {this.createList}
+            <ul>
+              {this.renderGroupList()}
             </ul>
           </div>
         </div>
