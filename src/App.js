@@ -3,6 +3,7 @@ import './App.css';
 import gameSets from './assets/sampledata.js';
 import Header from './components/Header'
 import Home from './components/Home'
+import Login from './components/Login'
 
 export class App extends Component {
   constructor(props) {
@@ -25,6 +26,18 @@ export class App extends Component {
     this.setState({ error: message });
   }
 
+  loginControl = () => {
+    if (this.state.isLoggedIn) {
+      return(
+        <Home />
+      )
+    } else {
+      return (
+        <Login />
+      )
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -34,7 +47,7 @@ export class App extends Component {
             {this.state.error}
           </div>
         }
-        <Home />
+        {this.loginControl}
       </div>
     );
   }

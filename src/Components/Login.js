@@ -22,7 +22,7 @@ export class Login extends Component {
   createList = () => {
     this.groups.forEach(group => {
       return(
-        <ul>{group}</ul>
+        <li>{group}</li>
       )
     })
   }
@@ -40,7 +40,7 @@ export class Login extends Component {
                 tabindex="0"
                 role="listbox"
                 aria-labelledby="ss_elem">
-              
+              {this.createList}
             </ul>
           </div>
         </div>
