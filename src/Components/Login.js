@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import gameSets from './assets/sampledata.js';
+import gameSets from '../assets/sampledata.js';
 
 export class Login extends Component {
   constructor(props) {
@@ -9,6 +9,22 @@ export class Login extends Component {
       password: "",
       groups: [],
     };
+  }
+
+  componentDidMount() {
+    let allGroups = []
+    gameSets.forEach(set => {
+      allGroups.push(set.name)
+    })
+    this.setState({ groups: allGroups })
+  }
+
+  createList = () => {
+    this.groups.forEach(group => {
+      return(
+        <ul>{group}</ul>
+      )
+    })
   }
   
   render() {
