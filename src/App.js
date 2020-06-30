@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import gameSets from './assets/sampledata.js';
-import Header from './Components/Header'
-import Home from './Components/Home'
+import Header from './components/Header'
+import Home from './components/Home'
 
 export class App extends Component {
   constructor(props) {
@@ -13,8 +13,13 @@ export class App extends Component {
       currentGameId: "",
       isLoggedIn: false,
       currentGroupId: "",
+      games: [],
     };
   }
+
+  // componentDidMount() {
+  //   this.setState({ games: gameSets.})
+  // }
 
   setError = message => {
     this.setState({ error: message });
