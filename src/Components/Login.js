@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import gameSets from '../assets/sampledata.js';
+import { access } from 'fs';
 
 export class Login extends Component {
   constructor(props) {
@@ -21,6 +22,41 @@ export class Login extends Component {
   }
 
   handleSubmit = e => {
+    const { user, password } = this.state
+    const users = gameSets.forEach(set => {
+      if (this.props.currentGroupId === set.id) {
+        return set.users
+      }
+    })
+    const data = {
+      users: users,
+      user: user,
+      password: password
+    }
+   this.validateUser(data)
+  }
+
+  validateUser = (data) => {
+    let usernameCorrect = false
+    let passwordCorrect = false
+    data.users.forEach(user => {
+      if (user.username === data.user) {
+        if(user.password === data.password) {
+          this.setLogin()
+        } else {
+          this.throwLoginError()
+        }
+      } else {
+        this.throwLoginError()
+      }
+    })
+  }
+
+  setLogin = () => {
+
+  }
+
+  throwLoginError = () => {
 
   }
   

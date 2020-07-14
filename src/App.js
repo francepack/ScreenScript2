@@ -34,7 +34,9 @@ export class App extends Component {
       )
     } else if (this.state.currentGroupId && !this.state.isLoggedIn) { 
       return (
-        <Login />
+        <Login 
+          currentGameId={this.state.currentGameId}
+        />
       )
     } else {
       return (
