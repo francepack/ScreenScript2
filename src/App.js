@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import gameSets from './assets/sampledata.js';
-import Header from './components/Header'
-import Home from './components/Home'
-import Login from './components/Login'
+import Header from './components/Header';
+import Home from './components/Home';
+import SelectGroup from './components/SelectGroup';
+import Login from './components/Login';
 
 export class App extends Component {
   constructor(props) {
@@ -31,9 +32,13 @@ export class App extends Component {
       return(
         <Home />
       )
+    } else if (this.state.currentGameId && !this.state.isLoggedIn) { 
+      return (
+        <Login />
+      )
     } else {
       return (
-        <Login
+        <SelecetGroup
           selectGroup={this.selectGroup}
         />
       )
