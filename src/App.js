@@ -33,9 +33,15 @@ export class App extends Component {
       )
     } else {
       return (
-        <Login />
+        <Login
+          selectGroup={this.selectGroup}
+        />
       )
     }
+  }
+
+  selectGroup = (groupId) => {
+    this.setState({ currentGroupId: groupId })
   }
 
   render() {
