@@ -5,50 +5,32 @@ export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentGroup: "",
+      // currentGroup: "",
       user: "",
       password: "",
-      groups: [],
     };
   }
 
-  componentDidMount() {
-    let allGroups = []
-    gameSets.forEach(set => {
-      allGroups.push({
-        name: set.name,
-        id: set.id
-      })
-    })
-    this.setState({ groups: allGroups })
-  }
-
-  renderGroupList = () => {
-    if (this.state.groups) {
-      return this.state.groups.map(group => (
-        <li
-          onClick={(e) => this.props.selectGroup(e.target.id)} 
-          key={group.name}
-          id={group.id}
-          >{group.name}
-        </li> 
-      ))
-    } 
-  }
+  // handleChange = () => {
+  //  
+  // }
   
   render() {
     return (
       <div className="login">
-        <h2>Hi there- Please select a group</h2>
-        <div className="listbox-area">
-          <div>
-            <span>
-              Groups:
-            </span>
-            <ul>
-              {this.renderGroupList()}
-            </ul>
-          </div>
+        <h2>Please enter login information:</h2>
+        <div className="form">
+          <form>
+            <label>
+              Username:
+              <input type="text" name="username" />
+            </label>
+            <label>
+              Password:
+              <input type="text" name="password" />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
         </div>
       </div>
     );

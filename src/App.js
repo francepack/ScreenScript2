@@ -32,7 +32,7 @@ export class App extends Component {
       return(
         <Home />
       )
-    } else if (this.state.currentGameId && !this.state.isLoggedIn) { 
+    } else if (this.state.currentGroupId && !this.state.isLoggedIn) { 
       return (
         <Login />
       )
