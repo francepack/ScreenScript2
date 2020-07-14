@@ -11,9 +11,18 @@ export class Login extends Component {
     };
   }
 
-  // handleChange = () => {
-  //  
-  // }
+  handleChange = e => {
+    const { name, value } = e.target;
+    if (name === 'user') {
+      this.setState({ user: value })
+    } else if (name === 'password') {
+      this.setState({ password: value })
+    }
+  }
+
+  handleSubmit = e => {
+
+  }
   
   render() {
     return (
@@ -23,11 +32,19 @@ export class Login extends Component {
           <form>
             <label>
               Username:
-              <input type="text" name="username" />
+              <input 
+                type="text" 
+                name="user"
+                onChange={this.handleChange}
+              />
             </label>
             <label>
               Password:
-              <input type="text" name="password" />
+              <input 
+                type="text" 
+                name="password"
+                onChange={this.handleChange} 
+              />
             </label>
             <input type="submit" value="Submit" />
           </form>
