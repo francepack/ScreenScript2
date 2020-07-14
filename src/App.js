@@ -3,7 +3,7 @@ import './App.css';
 import gameSets from './assets/sampledata.js';
 import Header from './components/Header';
 import Home from './components/Home';
-import SelectGroup from './components/SelectGroup';
+import Groups from './components/Groups';
 import Login from './components/Login';
 
 export class App extends Component {
@@ -38,7 +38,7 @@ export class App extends Component {
       )
     } else {
       return (
-        <SelecetGroup
+        <Groups
           selectGroup={this.selectGroup}
         />
       )
