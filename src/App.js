@@ -28,6 +28,10 @@ export class App extends Component {
     this.setState({ error: message });
   }
 
+  refreshError = () => {
+    this.setState({ error: "" })
+  }
+
   viewControl = () => {
     if (this.state.isLoggedIn) {
       return (

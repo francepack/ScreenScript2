@@ -26,7 +26,7 @@ export class Login extends Component {
     const { username, password } = this.state
     const findEmployee = mockEmployeeData.find(employee => (employee.name === username));
     if (!findEmployee) {
-      this.throwLoginError()
+      this.props.setError("User not found")
     }
     console.log(findEmployee)
 

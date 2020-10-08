@@ -10,6 +10,16 @@ var mockEmployeeData = [
     company: "Generic Company Games"
   },
   {
+    name: 'Mason',
+    password: '123',
+    company: "Generic Company Games"
+  },
+  {
+    name: 'Mason',
+    password: '123',
+    company: "Mason's Wacky Adventures"
+  },
+  {
     name: 'Joe Exotic',
     password: 'GetCarol',
     company: "Mason's Wacky Adventures"
