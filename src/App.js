@@ -33,9 +33,16 @@ export class App extends Component {
   }
 
   viewControl = () => {
-    if (this.state.isLoggedIn) {
+    if (this.state.isLoggedIn && this.state.currentGroupId) {
       return (
         <Home />
+      )
+    }
+    else if (this.state.isLoggedIn && !this.state.currentGroupId) {
+      return (
+        <Groups
+          selectGroup={this.selectGroup}
+        />
       )
     } else {
       return (
@@ -43,6 +50,7 @@ export class App extends Component {
           setError ={this.setError}
           currentGroupId={this.state.currentGroupId}
           selectGroup={this.selectGroup}
+          login={this.login}
         />
       )
     }
@@ -53,6 +61,14 @@ export class App extends Component {
       //   />
       // )
     // }
+  }
+
+  login = (companies) => {
+    if (companies.length === 1) {
+      this.setState({ isLoggedIn: true, currentGroupID: companies[0] })
+    } else {
+      this.setState({ isLoggedIn: true })
+    }
   }
 
   selectGroup = (groupId) => {
