@@ -24,12 +24,31 @@ export class Login extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const { username, password } = this.state
-    const findEmployee = mockEmployeeData.find(employee => (employee.name === username));
-    if (!findEmployee) {
+    let matchingEmployees = [];
+    mockEmployeeData.forEach(employee => {
+      if (employee.name === username) {
+        matchingEmployees.push(employee)
+      }
+    });
+    if (matchingEmployees.length = 0) {
+      console.log('run 123')
       this.props.setError("User not found")
     }
-    console.log(findEmployee)
-
+    console.log(matchingEmployees)
+    let companiesToAccess = [];
+    console.log(matchingEmployees)
+    matchingEmployees.forEach(employee => {
+      console.log('run 1')
+      if (employee.password === password) {
+        console.log('run 2')
+        companiesToAccess.push(employee.company)
+      }
+    })
+    console.log(companiesToAccess)
+    if (companiesToAccess.length = 0) {
+      this.props.setError("Incorrect Password")
+    }
+    console.log(companiesToAccess);
 
    //
    //  const data = {
