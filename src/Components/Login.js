@@ -36,22 +36,14 @@ export class Login extends Component {
     let accessedCompanies = [];
     mockEmployeeData.forEach(employee => {
       if (employee.name === username && employee.password === password) {
-        accessedCompanies.push(employee.company)
+        accessedCompanies.push(employee.company);
       }
-    })
+    });
     if (accessedCompanies.length === 0) {
-      this.props.setError("Incorrect Username/Password Combo")
+      this.props.setError("Incorrect Username/Password Combo");
     } else {
-      console.log(accessedCompanies)
+      this.props.login(accessedCompanies);
     }
-  }
-
-  setLogin = () => {
-    console.log(this.state.username)
-  }
-
-  throwLoginError = () => {
-    console.log(this.state.password)
   }
 
   render() {
