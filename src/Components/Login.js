@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import mockGameData from '../assets/mockGameData.js';
+import mockEmployeeData from '../assets/mockEmployeeData.js';
 
 export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // currentGroup: '',
-      user: '',
+      username: '',
       password: '',
     };
   }
 
   handleChange = e => {
+    console.log(this.state)
     const { name, value } = e.target;
-    if (name === 'user') {
-      this.setState({ user: value })
+    if (name === 'username') {
+      this.setState({ username: value })
     } else if (name === 'password') {
       this.setState({ password: value })
     }
@@ -22,25 +23,28 @@ export class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { user, password } = this.state
-    const users = mockGameData.forEach(set => {
-      if (this.props.currentGroupId === set.id) {
-        return set.users
-      }
-    })
-    const data = {
-      users: users,
-      user: user,
-      password: password
+    const { username, password } = this.state
+    const findEmployee = mockEmployeeData.find(employee => (employee.name === username));
+    if (!findEmployee) {
+      this.throwLoginError()
     }
-   this.validateUser(data)
+    console.log(findEmployee)
+
+
+   //
+   //  const data = {
+   //    users: users,
+   //    username: username,
+   //    password: password
+   //  }
+   // this.validateUser(data)
   }
 
   validateUser = (data) => {
-    console.log(this.state.user)
+    console.log(this.state.username)
 
     data.users.forEach(user => {
-      if (user.username === data.user) {
+      if (user.username === data.username) {
         if(user.password === data.password) {
           this.setLogin()
         } else {
@@ -53,7 +57,7 @@ export class Login extends Component {
   }
 
   setLogin = () => {
-    console.log(this.state.user)
+    console.log(this.state.username)
   }
 
   throwLoginError = () => {
@@ -65,12 +69,12 @@ export class Login extends Component {
       <div className="login">
         <h2>Please enter login information:</h2>
         <div className="form">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <label>
               Username:
               <input
                 type="text"
-                name="user"
+                name="username"
                 onChange={this.handleChange}
               />
             </label>
@@ -82,7 +86,7 @@ export class Login extends Component {
                 onChange={this.handleChange}
               />
             </label>
-            <input type="submit" value="Submit" onSubmit={this.handleSubmit} />
+            <input type="submit" value="Submit" />
           </form>
         </div>
       </div>

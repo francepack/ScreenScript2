@@ -15,3 +15,5 @@ var mockEmployeeData = [
     company: "Mason's Wacky Adventures"
   }
 ]
+
+export default mockEmployeeData;

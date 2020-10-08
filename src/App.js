@@ -33,19 +33,22 @@ export class App extends Component {
       return (
         <Home />
       )
-    } else if (this.state.currentGroupId && !this.state.isLoggedIn) {
-      return (
-        <Login
-          currentGroupId={this.state.currentGroupId}
-        />
-      )
     } else {
       return (
-        <Groups
+        <Login
+          setError ={this.setError}
+          currentGroupId={this.state.currentGroupId}
           selectGroup={this.selectGroup}
         />
       )
     }
+    // else {
+      // return (
+      //   <Groups
+      //     selectGroup={this.selectGroup}
+      //   />
+      // )
+    // }
   }
 
   selectGroup = (groupId) => {
