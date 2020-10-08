@@ -24,55 +24,26 @@ export class Login extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const { username, password } = this.state
-    let matchingEmployees = [];
-    mockEmployeeData.forEach(employee => {
-      if (employee.name === username) {
-        matchingEmployees.push(employee)
-      }
-    });
-    if (matchingEmployees.length = 0) {
-      console.log('run 123')
-      this.props.setError("User not found")
+    if (!username || !password) {
+      this.props.setError("Must enter a username and password");
+    } else {
+      this.validateUser();
     }
-    console.log(matchingEmployees)
-    let companiesToAccess = [];
-    console.log(matchingEmployees)
-    matchingEmployees.forEach(employee => {
-      console.log('run 1')
-      if (employee.password === password) {
-        console.log('run 2')
-        companiesToAccess.push(employee.company)
-      }
-    })
-    console.log(companiesToAccess)
-    if (companiesToAccess.length = 0) {
-      this.props.setError("Incorrect Password")
-    }
-    console.log(companiesToAccess);
-
-   //
-   //  const data = {
-   //    users: users,
-   //    username: username,
-   //    password: password
-   //  }
-   // this.validateUser(data)
   }
 
-  validateUser = (data) => {
-    console.log(this.state.username)
-
-    data.users.forEach(user => {
-      if (user.username === data.username) {
-        if(user.password === data.password) {
-          this.setLogin()
-        } else {
-          this.throwLoginError()
-        }
-      } else {
-        this.throwLoginError()
+  validateUser = () => {
+    const { username, password } = this.state
+    let accessedCompanies = [];
+    mockEmployeeData.forEach(employee => {
+      if (employee.name === username && employee.password === password) {
+        accessedCompanies.push(employee.company)
       }
     })
+    if (accessedCompanies.length === 0) {
+      this.props.setError("Incorrect Username/Password Combo")
+    } else {
+      console.log(accessedCompanies)
+    }
   }
 
   setLogin = () => {
