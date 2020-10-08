@@ -1,14 +1,14 @@
 // ***Sample data***
 
-// Data is broken into gamesets, allowing multiple 
+// Data is broken into gamesets, allowing multiple
 // groups to access their games on this platform.
 // You create custom script categories for each game,
 // allowing for groupings of related script pieces.
-// Each category has multiple script pieces, 
+// Each category has multiple script pieces,
 // and each of those script pieces has multiple texts,
 // each text has one of 3 types, influencing its view.
 
-var gameSets = [
+var mockGameData = [
   {
     name: "Awesome Games Inc",
     id: "aa",
@@ -1745,4 +1745,4 @@ var gameSets = [
   },
 ];
 
-export default gameSets;
+export default mockGameData;

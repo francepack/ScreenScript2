@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import gameSets from './assets/sampledata.js';
+import mockGameData from './assets/mockGameData.js';
+import mockEmployeeData from './assets/mockEmployeeData.js';
 import Header from './components/Header';
 import Home from './components/Home';
 import Groups from './components/Groups';
@@ -27,15 +28,15 @@ export class App extends Component {
     this.setState({ error: message });
   }
 
-  loginControl = () => {
+  viewControl = () => {
     if (this.state.isLoggedIn) {
-      return(
+      return (
         <Home />
       )
-    } else if (this.state.currentGroupId && !this.state.isLoggedIn) { 
+    } else if (this.state.currentGroupId && !this.state.isLoggedIn) {
       return (
-        <Login 
-          currentGameId={this.state.currentGameId}
+        <Login
+          currentGroupId={this.state.currentGroupId}
         />
       )
     } else {
@@ -60,7 +61,7 @@ export class App extends Component {
             {this.state.error}
           </div>
         }
-        {this.loginControl()}
+        {this.viewControl()}
       </div>
     );
   }

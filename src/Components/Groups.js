@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import gameSets from '../assets/sampledata.js';
+import mockGameData from '../assets/mockGameData.js';
 
 export class Groups extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export class Groups extends Component {
 
   componentDidMount() {
     let allGroups = []
-    gameSets.forEach(set => {
+    mockGameData.forEach(set => {
       allGroups.push({
         name: set.name,
         id: set.id
@@ -24,15 +24,15 @@ export class Groups extends Component {
     if (this.state.groups) {
       return this.state.groups.map(group => (
         <li
-          onClick={(e) => this.props.selectGroup(e.target.id)} 
+          onClick={(e) => this.props.selectGroup(e.target.id)}
           key={group.name}
           id={group.id}
           >{group.name}
-        </li> 
+        </li>
       ))
-    } 
+    }
   }
-  
+
   render() {
     return (
       <div className="selectgroup">

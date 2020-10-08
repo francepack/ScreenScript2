@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import gameSets from '../assets/sampledata.js';
-import { access } from 'fs';
+import mockGameData from '../assets/mockGameData.js';
 
 export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // currentGroup: "",
-      user: "",
-      password: "",
+      // currentGroup: '',
+      user: '',
+      password: '',
     };
   }
 
@@ -22,8 +21,9 @@ export class Login extends Component {
   }
 
   handleSubmit = e => {
+    e.preventDefault()
     const { user, password } = this.state
-    const users = gameSets.forEach(set => {
+    const users = mockGameData.forEach(set => {
       if (this.props.currentGroupId === set.id) {
         return set.users
       }
@@ -37,8 +37,8 @@ export class Login extends Component {
   }
 
   validateUser = (data) => {
-    let usernameCorrect = false
-    let passwordCorrect = false
+    console.log(this.state.user)
+
     data.users.forEach(user => {
       if (user.username === data.user) {
         if(user.password === data.password) {
@@ -53,13 +53,13 @@ export class Login extends Component {
   }
 
   setLogin = () => {
-
+    console.log(this.state.user)
   }
 
   throwLoginError = () => {
-
+    console.log(this.state.password)
   }
-  
+
   render() {
     return (
       <div className="login">
@@ -68,21 +68,21 @@ export class Login extends Component {
           <form>
             <label>
               Username:
-              <input 
-                type="text" 
+              <input
+                type="text"
                 name="user"
                 onChange={this.handleChange}
               />
             </label>
             <label>
               Password:
-              <input 
-                type="text" 
+              <input
+                type="text"
                 name="password"
-                onChange={this.handleChange} 
+                onChange={this.handleChange}
               />
             </label>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" onSubmit={this.handleSubmit} />
           </form>
         </div>
       </div>
