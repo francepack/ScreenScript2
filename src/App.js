@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import mockGameData from './assets/mockGameData.js';
 import mockEmployeeData from './assets/mockEmployeeData.js';
+import mockCompanyData from './assets/mockCompanyData.js';
 import Header from './components/Header';
 import Home from './components/Home';
-import Groups from './components/Groups';
+import CompanySelect from './components/CompanySelect';
 import Login from './components/Login';
 
 export class App extends Component {
@@ -42,6 +43,7 @@ export class App extends Component {
     else if (this.state.isLoggedIn && !this.state.currentCompanyId) {
       return (
         <CompanySelect
+          setError ={this.setError}
           selectCompany={this.selectCompany}
           companies={this.state.companies}
         />
@@ -66,14 +68,22 @@ export class App extends Component {
 
   login = (companies) => {
     if (companies.length === 1) {
-      this.setState({ isLoggedIn: true, companies: companies, currentGroupID: companies[0] })
+      const companyId = this.findCompanyId(companies[0]);
+      this.setState({ isLoggedIn: true, companies: companies, currentCompanyID: companyId })
     } else {
       this.setState({ isLoggedIn: true, companies: companies })
     }
   }
 
-  selectCompany = (companyId) => {
+  selectCompany = (companyName) => {
+    console.log(companyName)
+    const companyId = this.findCompanyId(companyName);
     this.setState({ currentCompanyId: companyId })
+  }
+
+  findCompanyId = (companyName) => {
+    let foundCompany = mockCompanyData.find(company => company.name === companyName);
+    return foundCompany.id;
   }
 
   render() {

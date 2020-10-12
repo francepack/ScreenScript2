@@ -19,4 +19,4 @@ var mockCompanyData = [
   }
 ]
 
-export default mockECompanyData;
+export default mockCompanyData;
