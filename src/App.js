@@ -15,7 +15,8 @@ export class App extends Component {
       isLoading: false,
       currentGameId: "",
       isLoggedIn: false,
-      currentGroupId: "",
+      currentCompanyId: "",
+      companies: [],
       games: [],
     };
   }
@@ -33,15 +34,16 @@ export class App extends Component {
   }
 
   viewControl = () => {
-    if (this.state.isLoggedIn && this.state.currentGroupId) {
+    if (this.state.isLoggedIn && this.state.currentCompanyId) {
       return (
         <Home />
       )
     }
-    else if (this.state.isLoggedIn && !this.state.currentGroupId) {
+    else if (this.state.isLoggedIn && !this.state.currentCompanyId) {
       return (
-        <Groups
-          selectGroup={this.selectGroup}
+        <CompanySelect
+          selectCompany={this.selectCompany}
+          companies={this.state.companies}
         />
       )
     } else {
@@ -49,7 +51,6 @@ export class App extends Component {
         <Login
           setError ={this.setError}
           currentGroupId={this.state.currentGroupId}
-          selectGroup={this.selectGroup}
           login={this.login}
         />
       )
@@ -65,14 +66,14 @@ export class App extends Component {
 
   login = (companies) => {
     if (companies.length === 1) {
-      this.setState({ isLoggedIn: true, currentGroupID: companies[0] })
+      this.setState({ isLoggedIn: true, companies: companies, currentGroupID: companies[0] })
     } else {
-      this.setState({ isLoggedIn: true })
+      this.setState({ isLoggedIn: true, companies: companies })
     }
   }
 
-  selectGroup = (groupId) => {
-    this.setState({ currentGroupId: groupId })
+  selectCompany = (companyId) => {
+    this.setState({ currentCompanyId: companyId })
   }
 
   render() {
