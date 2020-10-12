@@ -68,22 +68,24 @@ export class App extends Component {
 
   login = (companies) => {
     if (companies.length === 1) {
-      const companyId = this.findCompanyId(companies[0]);
-      this.setState({ isLoggedIn: true, companies: companies, currentCompanyID: companyId })
+      const company = this.findCompany(companies[0]);
+      this.setState({ isLoggedIn: true, companies: companies, currentCompanyID: company.id })
     } else {
       this.setState({ isLoggedIn: true, companies: companies })
     }
   }
 
   selectCompany = (companyName) => {
-    console.log(companyName)
-    const companyId = this.findCompanyId(companyName);
-    this.setState({ currentCompanyId: companyId })
+    const company = this.findCompany(companyName);
+    this.setState({ currentCompanyId: company.id })
+    console.log(this.state.currentCompanyId)
+    console.log(this.state)
   }
 
-  findCompanyId = (companyName) => {
+  findCompany = (companyName) => {
     let foundCompany = mockCompanyData.find(company => company.name === companyName);
-    return foundCompany.id;
+    console.log(foundCompany)
+    return foundCompany;
   }
 
   render() {
