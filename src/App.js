@@ -3,10 +3,10 @@ import './App.css';
 import mockGameData from './assets/mockGameData.js';
 import mockEmployeeData from './assets/mockEmployeeData.js';
 import mockCompanyData from './assets/mockCompanyData.js';
-import Header from './components/Header';
-import Home from './components/Home';
-import CompanySelect from './components/CompanySelect';
-import Login from './components/Login';
+import Header from './Components/Header';
+import Home from './Components/Home';
+import CompanySelect from './Components/CompanySelect';
+import Login from './Components/Login';
 
 export class App extends Component {
   constructor(props) {
@@ -36,8 +36,11 @@ export class App extends Component {
 
   viewControl = () => {
     if (this.state.isLoggedIn && this.state.currentCompanyId) {
+      console.log(this.state.games)
       return (
-        <Home />
+        <Home
+          games ={this.state.games}
+        />
       )
     }
     else if (this.state.isLoggedIn && !this.state.currentCompanyId) {
@@ -77,15 +80,16 @@ export class App extends Component {
 
   selectCompany = (companyName) => {
     const company = this.findCompany(companyName);
-    this.setState({ currentCompanyId: company.id })
-    console.log(this.state.currentCompanyId)
-    console.log(this.state)
+    const games = this.findCompanyGames(company.id);
+    this.setState({ currentCompanyId: company.id, games: games })
+  }
+
+  findCompanyGames = (companyId) => {
+    return mockGameData.filter(game => game.companyId === companyId)
   }
 
   findCompany = (companyName) => {
-    let foundCompany = mockCompanyData.find(company => company.name === companyName);
-    console.log(foundCompany)
-    return foundCompany;
+    return mockCompanyData.find(company => company.name === companyName);
   }
 
   render() {
