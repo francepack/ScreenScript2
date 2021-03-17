@@ -39,7 +39,9 @@ export class App extends Component {
       console.log(this.state.games)
       return (
         <Home
-          games ={this.state.games}
+          games={this.state.games}
+          currentGameId={this.state.currentGameId}
+          selectGame={this.selectGame}
         />
       )
     }
@@ -72,20 +74,25 @@ export class App extends Component {
   login = (companies) => {
     if (companies.length === 1) {
       const company = this.findCompany(companies[0]);
-      this.setState({ isLoggedIn: true, companies: companies, currentCompanyID: company.id })
+      this.setState({ isLoggedIn: true, companies: companies, currentCompanyID: company.id });
     } else {
-      this.setState({ isLoggedIn: true, companies: companies })
+      this.setState({ isLoggedIn: true, companies: companies });
     }
+  }
+
+  selectGame = (gameName) => {
+    const game = mockGameData.find(game => game.name === gameName);
+    this.setState({ currentGameId: game.id });
   }
 
   selectCompany = (companyName) => {
     const company = this.findCompany(companyName);
     const games = this.findCompanyGames(company.id);
-    this.setState({ currentCompanyId: company.id, games: games })
+    this.setState({ currentCompanyId: company.id, games: games });
   }
 
   findCompanyGames = (companyId) => {
-    return mockGameData.filter(game => game.companyId === companyId)
+    return mockGameData.filter(game => game.companyId === companyId);
   }
 
   findCompany = (companyName) => {
