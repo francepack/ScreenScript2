@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 import mockGameData from './assets/mockGameData.js';
 import mockEmployeeData from './assets/mockEmployeeData.js';
 import mockCompanyData from './assets/mockCompanyData.js';
