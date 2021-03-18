@@ -1,14 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Games from "./Games";
+import Game from "./Game";
 
-function Home() {
-  return (
-    <div className="home">
-      <div className="game-selector">
-        <h2>Welcome!</h2>
-        <p>Choose your game:</p>
+export class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+
+  renderGames = (games) => {
+    if (this.props.games) {
+      return this.props.games.map(game => (
+        <li
+          onClick={(e) => this.props.selectGame(e.target.id)}
+          key={game.name}
+          id={game.id}
+          >{game.name}
+        </li>
+      ))
+    }
+  }
+
+  viewControl = () => {
+    if (!this.props.currrentGame) {
+      console.log("no game")
+      return (
+        <Games />
+      )
+    } else {
+      console.log("yes")
+      return (
+        <Game />
+      )
+    }
+  }
+
+
+  render() {
+    return (
+      <div className="home">
+        {this.viewControl()}
       </div>
-    </div>
-  );
+    )
+  }
 }
 
 export default Home;

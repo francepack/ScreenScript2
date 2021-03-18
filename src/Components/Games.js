@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function Games() {
-  return (
-    <div className="games">
-    </div>
-  );
+class Games extends Component {
+
+  render() {
+    return (
+      <div className="games">
+      </div>
+    )
+  }
 }
 
 export default Games;
