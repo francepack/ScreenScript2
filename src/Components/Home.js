@@ -10,24 +10,25 @@ export class Home extends Component {
     };
   }
 
-  renderGames = (games) => {
-    if (this.props.games) {
-      return this.props.games.map(game => (
-        <li
-          onClick={(e) => this.props.selectGame(e.target.id)}
-          key={game.name}
-          id={game.id}
-          >{game.name}
-        </li>
-      ))
-    }
-  }
+  // renderGames = (games) => {
+  //   if (this.props.games) {
+  //     return this.props.games.map(game => (
+  //       <li
+  //         onClick={(e) => this.props.selectGame(e.target.id)}
+  //         key={game.name}
+  //         id={game.id}
+  //         >{game.name}
+  //       </li>
+  //     ))
+  //   }
+  // }
 
   viewControl = () => {
     if (!this.props.currrentGame) {
-      console.log("no game")
       return (
-        <Games />
+        <Games
+          games={this.props.games}
+        />
       )
     } else {
       console.log("yes")
