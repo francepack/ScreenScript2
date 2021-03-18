@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import mockGameData from '../assets/mockGameData.js';
 import mockEmployeeData from '../assets/mockEmployeeData.js';
+import '../css/login.css';
+
 
 export class Login extends Component {
   constructor(props) {
@@ -53,7 +55,7 @@ export class Login extends Component {
         <h2>Please enter login information:</h2>
         <div className="form">
           <form onSubmit={this.handleSubmit}>
-            <label>
+            <label className="login_input">
               Username:
               <input
                 type="text"
@@ -61,7 +63,7 @@ export class Login extends Component {
                 onChange={this.handleChange}
               />
             </label>
-            <label>
+            <label className="login_input">
               Password:
               <input
                 type="text"

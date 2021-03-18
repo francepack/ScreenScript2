@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './css/App.css';
+import './css/app.css';
 import mockGameData from './assets/mockGameData.js';
 import mockEmployeeData from './assets/mockEmployeeData.js';
 import mockCompanyData from './assets/mockCompanyData.js';
@@ -107,14 +107,16 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Header />
         {this.state.error &&
           <div className="error">
             {this.state.error}
           </div>
         }
-        {this.viewControl()}
+        <div className="content">
+          {this.viewControl()}
+        </div>
       </div>
     );
   }
