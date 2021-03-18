@@ -55,7 +55,7 @@ export class Login extends Component {
         <h2>Please enter login information:</h2>
         <div className="form">
           <form onSubmit={this.handleSubmit}>
-            <label className="login_input">
+            <label className="login-input">
               Username:
               <input
                 type="text"
@@ -63,7 +63,7 @@ export class Login extends Component {
                 onChange={this.handleChange}
               />
             </label>
-            <label className="login_input">
+            <label className="login-input">
               Password:
               <input
                 type="text"

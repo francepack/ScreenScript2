@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Images from './Images';
 import Screenshare from './Screenshare';
 import Script from './Script';
 import ScriptSelector from './ScriptSelector';
+import '../css/game.css'
 
 class Game extends Component {
   constructor(props) {
