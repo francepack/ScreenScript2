@@ -25,6 +25,7 @@ class Games extends Component {
   render() {
     return (
       <div className="games">
+        <p>Welcome {this.props.userName}!</p>
         {this.renderGames()}
       </div>
     )

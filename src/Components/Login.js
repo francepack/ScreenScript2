@@ -42,6 +42,7 @@ export class Login extends Component {
     if (accessedCompanies.length === 0) {
       this.props.setError("Incorrect Username/Password Combo");
     } else {
+      this.props.setUserName(username);
       this.props.login(accessedCompanies);
     }
   }

@@ -19,6 +19,7 @@ export class App extends Component {
       currentCompanyId: "",
       companies: [],
       games: [],
+      userName: "",
     };
   }
 
@@ -42,6 +43,7 @@ export class App extends Component {
           games={this.state.games}
           currentGameId={this.state.currentGameId}
           selectGame={this.selectGame}
+          userName={this.state.userName}
         />
       )
     }
@@ -59,6 +61,7 @@ export class App extends Component {
           setError ={this.setError}
           currentGroupId={this.state.currentGroupId}
           login={this.login}
+          setUserName={this.setUserName}
         />
       )
     }
@@ -80,9 +83,12 @@ export class App extends Component {
     }
   }
 
-  selectGame = (gameName) => {
-    const game = mockGameData.find(game => game.name === gameName);
-    this.setState({ currentGameId: game.id });
+  setUserName = (name) => {
+    this.setState({ userName: name })
+  }
+
+  selectGame = (gameId) => {
+    this.setState({ currentGameId: gameId });
   }
 
   selectCompany = (companyName) => {

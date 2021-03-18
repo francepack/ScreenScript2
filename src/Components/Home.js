@@ -24,16 +24,18 @@ export class Home extends Component {
   // }
 
   viewControl = () => {
-    if (!this.props.currrentGame) {
+    if (this.props.currentGameId) {
       return (
-        <Games
-          games={this.props.games}
-        />
+        <Game />
       )
     } else {
       console.log("yes")
       return (
-        <Game />
+        <Games
+          games={this.props.games}
+          userName={this.props.userName}
+          selectGame={this.props.selectGame}
+        />
       )
     }
   }
